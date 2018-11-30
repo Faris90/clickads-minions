@@ -17,23 +17,7 @@ module.exports = Commands;
 //var fillChar = require('./commands/fillChar.js');
 
 // Commands
-Commands.chat = {
-  help: function(gameServer,player,split) {
-    var msg = function(m) {
-      gameServer.pm(player.pID,m);
-    }
-    msg("============ Available Commands... =============");
-    msg("Color [r] [b] [g]  | Change your chat color");
-    msg("Mute               | Mute/unmute chat");
-    msg("Pm [chatname] [msg]| Privatly message a player");
-    msg("================================================");
-  },
-  pm: require('./commands/pm.js'),
-  color: require('./commands/colorchat.js'),
-  mute: require('./commands/mute.js'),
-  
-  
-}
+
 
 Commands.multiverse = {
     multiverse: require('./commands/multiverse.js'),
