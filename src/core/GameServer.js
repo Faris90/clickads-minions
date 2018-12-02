@@ -20,12 +20,7 @@ const Logger = require('../modules/log');
 const StatServer = require('./StatServer.js');
 const GeneratorService = require('./GeneratorService.js');
 const PluginLoader = require('./PluginLoader.js');
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write('Hello World!');
-  res.end();
-}).listen(8080);
+
 
 module.exports = class GameServer {
   constructor(world, consoleService, configService, version, port, ismaster, name, banned, multiverse, gamemode) {
@@ -301,6 +296,12 @@ startingFood() {
       //setInterval(this.mainLoop.bind(this), 1);
       setImmediate(this.mainLoopBind);
  var port = (this.port) ? this.port : this.config.serverPort;
+    var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write('Hello World!');
+  res.end();
+}).listen(process.env.PORT);
       var serverPort = (this.config.vps == 1) ? process.env.PORT : port;
       
       console.log("[" + this.name + "] Listening on port " + serverPort);
