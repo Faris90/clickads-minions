@@ -283,23 +283,7 @@ startingFood() {
     this.masterServer();
 
     // Start the server
-    var port = (this.port) ? this.port : this.config.serverPort;
-let server = http.createServer((req, res) => {
-  let { pathname } = url.parse(req.url)
-  switch (pathname) {
-    case '/':
-      res.writeHead(200)
-      res.end('<!DOCTYPE html><h3>Arras</h3>')
-    break
-    case '/mockups.json':
-        res.writeHead(200)
-      res.end('<!DOCTYPE html><h3>Arras</h3>')
-    break
-    default:
-      res.writeHead(404)
-      res.end()
-  }
-}).listen(process.env.PORT || 8080)
+   
     this.socketServer = new WebSocket.Server({
       port: (this.config.vps == 1) ? process.env.PORT : port,
       perMessageDeflate: false
