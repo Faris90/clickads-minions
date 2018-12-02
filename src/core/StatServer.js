@@ -4,7 +4,7 @@ var http = require('http');
 module.exports = class StatServer {
   constructor(gameServer, port, serverStatsUpdateTime, ismaster) {
     this.gameServer = gameServer;
-    this.port = port;
+    this.port = 3000;
     this.serverStatsUpdateTime = (serverStatsUpdateTime) ? serverStatsUpdateTime : 1;
     this.stats = "";
     this.interveral = undefined;
