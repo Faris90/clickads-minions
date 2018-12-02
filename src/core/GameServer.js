@@ -284,6 +284,18 @@ startingFood() {
 
     // Start the server
     var port = (this.port) ? this.port : this.config.serverPort;
+  let server = http.createServer((req, res) => {
+  let { pathname } = url.parse(req.url)
+  switch (pathname) {
+    case '/':
+      res.writeHead(200)
+      res.end('<!DOCTYPE html><h3>Arras</h3>')
+    break
+    default:
+      res.writeHead(404)
+      res.end()
+  }
+}).listen(process.env.PORT || 8080)
     this.socketServer = new WebSocket.Server({
       port: (this.config.vps == 1) ? process.env.PORT : port,
       perMessageDeflate: false
@@ -296,12 +308,7 @@ startingFood() {
       //setInterval(this.mainLoop.bind(this), 1);
       setImmediate(this.mainLoopBind);
  var port = (this.port) ? this.port : this.config.serverPort;
-    var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write('Hello World!');
-  res.end();
-}).listen(process.env.PORT);
+  
       var serverPort = (this.config.vps == 1) ? process.env.PORT : port;
       
       console.log("[" + this.name + "] Listening on port " + serverPort);
